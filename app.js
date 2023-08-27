@@ -1,5 +1,6 @@
 const express = require('express')
 const cors = require('cors')
+const fs = require('fs')
 const app = express() 
 const PORT = process.env.PORT || 3044
 app.use(express.json())
@@ -10,6 +11,8 @@ app.get('/', (req,res) => {
         message: 'WELCOME TO Result Website'
     })
 })
+
+
 
 app.get('/api/results/:usn', (req, res) => {
     const usn = req.params.usn
