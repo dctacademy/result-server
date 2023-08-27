@@ -11,6 +11,23 @@ app.get('/', (req,res) => {
     })
 })
 
+app.get('/api/results/:usn', (req, res) => {
+    const usn = req.params.usn
+    fs.readFile('./data.json', 'utf-8', (err, db) => {
+        if (err) {
+            res.json(err)
+        } else {
+            const data = JSON.parse(db)
+            const category = data.find(result => result.usn == usn)
+            if (result) {
+                res.json(result)
+            } else {
+                res.json({})
+            }
+        }
+    })
+})
+
 app.listen(PORT, () => {
     console.log('server running on port ' + PORT)
 })
