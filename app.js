@@ -21,7 +21,7 @@ app.get('/api/results/:usn', (req, res) => {
             res.json(err)
         } else {
             const data = JSON.parse(db)
-            const category = data.find(result => result.usn == usn)
+            const result = data.find(result => result.usn == usn)
             if (result) {
                 res.json(result)
             } else {
